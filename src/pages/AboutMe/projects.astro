@@ -1,0 +1,38 @@
+---
+import "../../styles/global.css"
+import BaseLayout from "../../layouts/BaseLayout.astro"
+import ProjectCard from "../../components/ProjectCard.astro"
+import { getCollection } from "astro:content"
+
+const projects = await getCollection('projects')
+---
+
+<BaseLayout title="Proyectos">
+  <section class="flex flex-col items-center text-center gap-8 py-16">
+
+    <h1 class="text-4xl font-bold text-zinc-100 tracking-tight">
+      Enrutamiento de <span class="text-indigo-400">Astro</span>
+    </h1>
+
+    <img
+      src="https://astro.build/assets/press/astro-icon-light.svg"
+      alt="Logo de Astro"
+      width="120"
+      height="120"
+    />
+
+    <section class="flex flex-row justify-center gap-8 w-full">
+      {projects.map((project) => (
+        <ProjectCard
+          title={project.data.title}
+          author={project.data.author}
+          technologies={project.data.technologies}
+          skills={project.data.skills}
+          link={project.data.link}
+          description={project.body ?? ''}
+        />
+      ))}
+    </section>
+
+  </section>
+</BaseLayout>
