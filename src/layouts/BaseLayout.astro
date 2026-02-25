@@ -1,0 +1,73 @@
+---
+/**
+ * Base Layout of the web
+ * Defines HTML common structre i will use head,header,main,footer
+ * all pages on pages/ will extend this layout 
+ */
+interface Props{
+    title : string;
+    description?: string;
+}
+
+const {
+    title = "BaseLayout",
+    description = "Base layout of my test web"
+}=Astro.props
+
+
+---
+
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content={description} />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <title>{title}</title>
+    </head>
+
+    <body class="bg-zinc-950 text-zinc-300 min-h-screen flex flex-col font-sans">
+
+        <!-- HEADER -->
+        <header class="border-b border-zinc-800 bg-zinc-950 sticky top-0 z-50">
+            <nav class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+                <a href="/" class="text-zinc-100 font-semibold text-lg tracking-tight">
+                    Samuel<span class="text-indigo-400">.</span>
+                </a>
+                <ul class="flex gap-8">
+                    <li>
+                        <a href="/" class="text-sm text-zinc-400 hover:text-zinc-100 transition-colors duration-200">
+                            Inicio
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/AboutMe" class="text-sm text-zinc-400 hover:text-zinc-100 transition-colors duration-200">
+                            Proyectos
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- CONTENIDO DE LA PÁGINA -->
+        <main class="flex-1 max-w-5xl mx-auto w-full px-6 py-16">
+            <slot />
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="border-t border-zinc-800 mt-auto">
+            <div class="max-w-5xl mx-auto px-6 py-6 flex justify-between items-center">
+                <p class="text-sm text-zinc-600">
+                    Todos los derechos reservados 
+                </p>
+                <p class="text-sm text-zinc-600">
+                    2026
+                </p>
+            </div>
+        </footer>
+
+    </body>
+</html>
+
+
