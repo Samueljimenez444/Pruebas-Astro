@@ -11,3 +11,5 @@ schema : z.object({
     link: z.string(),
 })
 })
+
+export const collections = {projects}
