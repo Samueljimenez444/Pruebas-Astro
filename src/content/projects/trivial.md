@@ -1,4 +1,5 @@
 ---
+
 title : Trivial-Game
 author : Samuel Jimenez, Ivan Carrascosa, Jose Manuel Maya, Fran Gonzalez
 technologies : React Native, ASP.NET, SignalR, Azure

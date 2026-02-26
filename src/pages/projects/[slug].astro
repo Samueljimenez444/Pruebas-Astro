@@ -2,17 +2,21 @@
 import { getCollection, render } from "astro:content"
 import BaseLayout from "../../layouts/BaseLayout.astro"
 
-//
+//function that get generates all static paths for the projects 
 export async function getStaticPaths() {
+  //get all projects from the collection
   const projects = await getCollection('projects')
 
+  //returns the projects map to a single projecct, with its params and a slug 
   return projects.map((project) => ({
     params: { slug: project.slug },
     props: { project },
   }))
 }
 
+//const project with all its props
 const {project} = Astro.props
+//content render
 const {Content} = await render(project)
 
 --- 
