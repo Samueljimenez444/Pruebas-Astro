@@ -11,6 +11,8 @@ interface Props{
     description?: string;
 }
 
+//Const with the title of the layout and a simple description, inherits astro props
+
 const {
     title = "BaseLayout",
     description = "Base layout of my test web"
@@ -29,7 +31,7 @@ const {
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <title>{title}</title>
         <ClientRouter/>
-    </head>
+    <slot name="head"></slot>
 
     <body transition:animate="slide", class="bg-zinc-950 text-zinc-300 min-h-screen flex flex-col font-sans">
 
@@ -59,7 +61,7 @@ const {
 
         <!-- Page content -->
         <main class="flex-1 max-w-5xl mx-auto w-full px-6 py-16">
-            <slot />
+            <slot name="hero"></slot>
         </main>
 
         <!-- FOOTER -->
