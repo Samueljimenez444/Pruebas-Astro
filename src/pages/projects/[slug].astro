@@ -24,7 +24,7 @@ const {Content} = await render(project)
 <BaseLayout title={project.data.title}>
   <article class="max-w-2xl mx-auto py-16 px-4 flex flex-col gap-6">
 
-    <h1 class="text-4xl font-bold text-zinc-100">{project.data.title}</h1>
+    <h1 transition:name={`title-${project.id}`}, class="text-4xl font-bold text-zinc-100">{project.data.title}</h1>
     <p class="text-zinc-500 text-sm">{project.data.author}</p>
 
     <div>
